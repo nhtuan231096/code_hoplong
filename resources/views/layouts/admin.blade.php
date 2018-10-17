@@ -261,10 +261,11 @@ desired effect
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="{{route('HomeAdmin')}}"><i class="fa fa-dashboard"></i> <span>Bảng điều khiển</span></a></li>
-        <li><a href="#"><i class="fa fa-th"></i> <span>Hãng sản phẩm</span></a></li>
-        <li><a href="#"><i class="fa fa-laptop"></i> <span>Sản phẩm</span></a></li>
-        <li><a href="#"><i class="fa fa-image"></i> <span>Banner</span></a></li>
-        <li><a href="#"><i class="fa fa-edit"></i><span>Tin tức</span></a></li>
+        <li><a href="{{route('category')}}"><i class="fa fa-table"></i> <span>Danh mục sản phẩm</span></a></li>
+        <li><a href="{{route('partners')}}"><i class="fa fa-th"></i> <span>Hãng sản phẩm</span></a></li>
+        <li><a href="#"><i class="fa fa-laptop"></i> <span>Quản lý sản phẩm</span></a></li>
+        <li><a href="#"><i class="fa fa-image"></i> <span>Quản lý banner</span></a></li>
+        <li><a href="#"><i class="fa fa-edit"></i><span>Quản lý tin tức</span></a></li>
         <li><a href="#"><i class="fa fa-download"></i><span>Download</span></a></li>
         <li><a href="#"><i class="fa fa-users"></i><span>Supporter</span></a></li>
         <li class="treeview">
@@ -278,7 +279,8 @@ desired effect
             <li><a href="#">Link in level 2</a></li>
           </ul>
         </li>
-        <li><a href="#"><i class="fa fa-user"></i> <span>Tài khoản</span></a></li>
+        <li><a href="#"><i class="fa fa-user"></i> <span>Tài khoản quản trị</span></a></li>
+        <li><a href="#"><i class="fa fa-edit"></i> <span>Thông tin tài khoản</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
