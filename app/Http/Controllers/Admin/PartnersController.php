@@ -21,9 +21,8 @@ class PartnersController extends Controller
 	}	
 	public function postAddPartner(Request $req){
 		$this->validate($req,[
-				'title' => 'required|min:6|unique:category,title',
-				'slug' => 'required|min:6',
-				'file_upload' => 'required',
+				'title' => 'required|min:3|unique:category,title',
+				'slug' => 'required|min:3',
 				'link' => 'required'
 			],[
 				'title.required' => 'Tên không được để trống !!',
@@ -31,8 +30,7 @@ class PartnersController extends Controller
 				'title.unique' => 'Tiêu đề đã tồn tại',
 				'slug.min' => 'Đường dẫn tĩnh ít nhất :min ký tự',
 				'slug.required' => 'Đường dẫn không được để trống',
-				'link.required' => 'Đường dẫn liên kết không được để trống',
-				'file_upload.required' => 'Bạn chưa chọn ảnh'
+				'link.required' => 'Đường dẫn liên kết không được để trống'
 			]);
 		if ($req->hasFile('file_upload')) {
 			$img='';
@@ -59,34 +57,32 @@ class PartnersController extends Controller
 	}
 	public function postEditPartner($id,Request $req){
 		$this->validate($req,[
-				'title' => 'required|min:6',
-				'slug' => 'required|min:6',
-				'file_upload' => 'required',
-				'link' => 'required'
-			],[
-				'title.required' => 'Tên không được để trống !!',
-				'title.min' => 'Tiêu đề ít nhất :min ký tự',
-				'slug.min' => 'Đường dẫn tĩnh ít nhất :min ký tự',
-				'slug.required' => 'Đường dẫn không được để trống',
-				'link.required' => 'Đường dẫn liên kết không được để trống'
-			]);
-		if ($req->hasFile('file_upload')) {
-			$editCategory = Partners::find($id);
-			$img = $editCategory->file_upload;
-			$file = $req->file_upload;
+			'title' => 'required|min:3',
+			'slug' => 'required|min:3',
+			'link' => 'required'
+		],[
+			'title.required' => 'Tiêu đề không được để trống !!',
+			'title.min' => 'Tiêu đề ít nhất :min ký tự',
+			'slug.min' => 'Đường dẫn tĩnh ít nhất :min ký tự',
+			'slug.required' => 'Đường dẫn không được để trống',
+			'link.required' => 'Đường dẫn liên kết không được để trống'
+		]);
+
+		$partner=Partners::find($id);
+		$img=$partner->cover_image;
+		if($req->hasFile('cover_image')) {
+			$file=$req->cover_image;
 			$file->move(base_path('uploads/partner'),$file->getClientOriginalName());
-			$img = $file->getClientOriginalName();
+			$img=$file->getClientOriginalName();
 			$req->merge(['cover_image'=>$img]);
-			// dd($req->all());
-			$update = $editCategory->update($req->all());
-			if($update)
-			{
-				return redirect()->route('partners')->with('success','Cập nhật hãng sản phẩm thành công');
-			}
-			else
-			{
-				return redirect()->back()->with('errors','Có lỗi cập nhật');
-			}
+		}
+		if($editPartner=$partner->update($req->all()))
+		{
+			return redirect()->route('category')->with('success','Cập nhật hãng sản phẩm thành công');
+		}
+		else
+		{
+			return redirect()->route('category')->with('error','Có lỗi khi cập nhật');
 		}
 	}	
 	public function deletePartner($id){

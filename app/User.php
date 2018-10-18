@@ -17,15 +17,14 @@ class User extends Authenticatable
      */
     protected $table = 'user';
     protected $fillable = [
-        'name', 'email', 'password',
+        'username','fullname','email', 'password','avatar','group_id','status'
     ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+    
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function group(){
+        return $this->hasOne('App\Models\User_group','id','group_id');
+    }
+    public $remember_token=false;
 }

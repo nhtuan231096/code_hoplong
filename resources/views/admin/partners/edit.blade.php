@@ -30,7 +30,7 @@
 				<label for="">Ảnh đại diện</label>
 				<div class="clearfix"></div>
 				<img width="100px" src="{{url('uploads/partner')}}/{{$partner->cover_image}}" alt="">
-				<input type="file" class="form-control" name="file_upload" id="">
+				<input type="file" class="form-control" name="cover_image" id="">
 			</div>
 			<div class="form-group">
 				<label for="">Liên kết</label>

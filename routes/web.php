@@ -13,13 +13,15 @@
 Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'auth'],function(){
 	include('admin/category.php');
 	include('admin/partners.php');
+	include('admin/product.php');
+	include('admin/account.php');
 });
 // Route login admin
 Route::get('admin/login.html','Admin\AdminController@login')->name('login');
 Route::post('admin/login.html','Admin\AdminController@post_login')->name('login');
 
 // Route logout admin
-Route::get('admin/logout','Admin\AdminController@logout')->name('loginAdmin');
+Route::get('admin/logout','Admin\AdminController@logout')->name('logout');
 // Route::get('/', function () {
 //     return view('welcome');
 // });
