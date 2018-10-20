@@ -1,4 +1,7 @@
 <?php 
+Route::resource('posts','Account_groupController');
+Route::post('posts/changeStatus', array('as' => 'changeStatus', 'uses' => 'Account_groupController@changeStatus'));
+
 // route account group
 Route::get('/account-group','Account_groupController@account_group')->name('account_group');
 Route::post('/account-group/add','Account_groupController@addUserGroup')->name('addUserGroup');

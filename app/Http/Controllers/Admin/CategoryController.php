@@ -18,7 +18,7 @@ class CategoryController extends Controller
 		// 		$parents=$parentid;
 		// 	}
 		// }
-		$category=Category::paginate(15);
+		$category=Category::orderBy('id','DESC')->paginate(15);
 		$parent=Category::all();
 		// dd($category);
 		return view('admin.category.index',[

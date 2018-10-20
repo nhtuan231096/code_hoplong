@@ -24,5 +24,17 @@ class Product extends Model
 		{
 			return $this->hasOne('\App\Models\Category','id','category_id');
 		}	
+	public static function getExcerpt($str, $startPos = 0, $maxLength = 50) {
+		if(strlen($str) > $maxLength) {
+			$excerpt   = substr($str, $startPos, $maxLength - 6);
+			$lastSpace = strrpos($excerpt, ' ');
+			$excerpt   = substr($excerpt, 0, $lastSpace);
+			$excerpt  .= ' [...]';
+		} else {
+			$excerpt = $str;
+		}
+		
+		return $excerpt;
+	}
 }
  ?>

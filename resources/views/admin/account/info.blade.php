@@ -23,18 +23,67 @@
 					<h2 class="panel-title text-center">Thông tin tài khoản</h2>
 				</div>
 				<div class="panel-body">
-					<table class="table table-hover">
+					<div class="row">
+						<div class="container">
+							<table class="table table-hover">
 						<thead>
 							<tr>
-								<th></th>
+								<th width="100px">Họ tên</th>
+								<td>:</td>
+								<td>{{Auth::user()->fullname}}</td>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
+								<th>Tài khoản</th>
+								<td>:</td>
+								<td>{{Auth::user()->username}}</td>
+							</tr>
+							<tr>
+								<th>Email </th>
+								<td>:</td>
+								<td>{{Auth::user()->email}}</td>
+							</tr>
+							<tr>
+								<th>Quyền admin </th>
+								<td>:</td>
+								<td>{{Auth::user()->group->title}}</td>
+							</tr>
+							<tr>
+								<th></th>
 								<td></td>
+								<td><a class="btn btn-primary pull-right" data-toggle="modal" href='#modal-id'>Đổi mật khẩu</a>
+								<div class="modal fade" id="modal-id">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+												<h4 class="modal-title">Đổi mật khẩu</h4>
+											</div>
+											<div class="modal-body">
+												<form action="" method="POST" role="form">
+													<div class="form-group">
+														<label for="">Mật khẩu cũ</label>
+														<input type="password" class="form-control" id="" placeholder="Nhập mật khẩu cũ">
+													</div>	
+													<div class="form-group">
+														<label for="">Mật khẩu mới</label>
+														<input type="password" class="form-control" id="" placeholder="Nhập mật khẩu mới">
+													</div>	
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+														<button type="button" class="btn btn-primary">Đổi mật khẩu</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div></td>
 							</tr>
 						</tbody>
 					</table>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

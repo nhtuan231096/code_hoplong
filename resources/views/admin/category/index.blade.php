@@ -148,7 +148,7 @@
 				@endforeach
 			</tbody>
 		</table>
-		{{$cates->links()}}
+	{{$cates->links()}}
 	</div>
 </div>
 @stop()

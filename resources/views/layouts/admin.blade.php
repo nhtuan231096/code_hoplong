@@ -18,14 +18,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{url('public/admin')}}/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{url('public/admin')}}/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="{{url('public/admin')}}/dist/css/style.css">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
-        <link rel="stylesheet" href="{{url('public/admin')}}/dist/css/skins/skin-blue.min.css">
+  <link rel="stylesheet" href="{{url('public/admin')}}/dist/css/skins/skin-blue.min.css">
+  <!-- <link rel="stylesheet" href="{{url('public/admin')}}/dist/css/style.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -33,7 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Google Font -->
   <link rel="stylesheet"
-  href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -101,7 +102,7 @@ desired effect
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{route('infoAccount')}}" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="{{route('logout')}}" class="btn btn-default btn-flat">Sign out</a>
@@ -304,14 +305,17 @@ desired effect
 
 <!-- jQuery 3 -->
 <script src="{{url('public/admin')}}/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="{{url('public/admin')}}/bower_components/jquery/dist/validate.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{url('public/admin')}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{url('public/admin')}}/dist/js/adminlte.min.js"></script>
+{{-- <script type="text/javascript" src="{{ asset('toastr/toastr.min.js') }}"></script> --}}
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
-   </body>
-   </html>
+</body>
+</html>
