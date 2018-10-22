@@ -2,12 +2,15 @@
 @section('title','Danh sách sản phẩm')
 @section('links','Danh mục')    
 @section('main')
+<!-- Load Thư viện jQuery vào trước khi load jQuery Validate-->
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="main-pro">
     <div class="row">
         <div class="col-lg-12 margin-tb">
-
+    <!-- <div class="alert alert-danger print-error-msg" style="display:none"> -->
 
         </div>
     </div>
@@ -25,7 +28,7 @@
 
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
 
-                                <h4 class="modal-title" id="myModalLabel">Tạo mới sản phẩm</h4>
+                                <h4 class="modal-title title-product" id="myModalLabel">Tạo mới sản phẩm</h4>
 
                             </div>
 
@@ -33,108 +36,135 @@
 
 
 
-                                <form data-toggle="validator" action="{{ route('post.store') }}" method="POST">
+                                <form data-toggle="validator" id="formDemo" method="GET" action="{{ route('post.store') }}">
 
-                                    <ul class="nav nav-tabs">
-                                      <li class="active"><a data-toggle="tab" href="#home">Thông tin sản phẩm</a></li>
-                                      <li><a data-toggle="tab" href="#menu1">Ảnh, thông tin thẻ</a></li>
+                                    <ul class="nav nav-tabs" style="font-style:20px">
+                                      <li class="active "><a data-toggle="tab" href="#home">Thông tin cơ bản</a></li>
+                                      <li class=""><a data-toggle="tab" href="#menu1">Chi tiết</a></li>
                                   </ul>
 
                                   <div class="tab-content">
                                       <div id="home" class="tab-pane fade in active">
-                                        <div class="form-group">
+                                          <br>
+                                          <div class="form-group">
 
                                             <label class="control-label" for="title">Tên sản phẩm:</label>
 
-                                            <input type="text" name="title" class="form-control" data-error="Please enter title." required />
+                                            <input type="text" name="title" id="name" class="form-control" required>
                                             
-                                            <div class="help-block with-errors"></div>
+                                            <p class="errorTitle text-center alert alert-danger hidden"></p>
 
                                         </div>
 
                                         <div class="form-group">
 
-                                            <label class="control-label" for="title">Đường dẫn tĩnh:</label>
+                                            <label class="control-label" for="slug">Đường dẫn tĩnh:</label>
 
-                                            <input type="text" name="slug" class="form-control" data-error="Please enter title." required />
+                                            <input type="text" name="slug" id="slug" class="form-control" required>
+
+                                            <p class="errorSlug text-center alert alert-danger hidden"></p>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="short_description">Mô tả ngắn:</label>
+                                            <input type="text" name="short_description" id="short_description" class="form-control">
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <label class="control-label" for="product_code">Mã sản phẩm</label>
+                                            <input type="text" name="product_code" id="product_code" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+
+                                            <label class="control-label" for="feature">Đặc tính:</label>
+
+                                            <textarea type="text" id="desc" name="feature" class="form-control"></textarea>
 
                                             <div class="help-block with-errors"></div>
 
                                         </div>
-
                                         <div class="form-group">
-
-                                            <label class="control-label" for="title">Đặc tính:</label>
-
-                                            <input type="text" name="feature" class="form-control" data-error="Please enter title." required />
-
+                                            <label class="control-label" for="specifications">Thông số kỹ thuật:</label>
+                                            <textarea type="text" id="desc" name="specifications" class="form-control"></textarea>
+                                        
                                             <div class="help-block with-errors"></div>
 
                                         </div>
                                         <div class="form-group">
 
-                                            <label class="control-label" for="title">Thông số kỹ thuật:</label>
+                                            <label class="control-label" for="catalog">catalog:</label>
 
-                                            <input type="text" name="specifications" class="form-control" data-error="Please enter title." required />
-
-                                            <div class="help-block with-errors"></div>
-
-                                        </div>
-                                        <div class="form-group">
-
-                                            <label class="control-label" for="title">catalog:</label>
-
-                                            <input name="catalog" class="form-control" data-error="Please enter details." required>
+                                            <input name="catalog" class="form-control" data-error="Please enter details.">
 
                                             <div class="help-block with-errors"></div>
                                             <input type="hidden" name="created_by" value="{{Auth::user()->username}}">
                                         </div>
+                                        <input type="hidden" name="status" value="enable">
                                         <div class="form-group">
 
-                                            <label class="control-label" for="title">Giá:</label>
+                                            <label class="control-label" for="price">Giá:</label>
 
-                                            <input name="price" class="form-control" value="Liên hệ:" data-error="Please enter details." required>
+                                            <input name="price" class="form-control" value="Liên hệ: 1900.6536">
 
                                             <div class="help-block with-errors"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label" for="title">Danh mục:</label>
-                                            <select name="category_id" id="inputCategory_id" class="form-control" required>
+                                            <label class="control-label" for="category_id">Danh mục:</label>
+                                            <select name="category_id" id="" class="form-control" data-error="Bạn chưa chọn danh mục." required>
                                                 <option value="">Chọn danh mục</option>
-
-                                                <option value="1111">1</option>
+                                                @foreach($cates as $cate)
+                                                <option value="{{$cate->id}}">{{$cate->title}}</option>
+                                                @endforeach
                                                 
                                             </select>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                     <div id="menu1" class="tab-pane fade">
-                                        <h3>Thông tin các thẻ</h3>
+                                        <br>
                                         <div class="form-group">
-                                            <label class="control-label" for="title">Ảnh</label>
-                                            <input type="file" name="upload_file" class="form-control" data-error="Please enter details." required>
+                                            <label class="control-label" for="promotion">Khuyến mãi</label>
+                                            <input type="text" name="promotion" id="promotion" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="download_id">ID tải xuống</label>
+                                            <input type="text" name="download_id" id="promotion" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="upload_file">Ảnh</label>
+                                            <input type="file" name="upload_file" class="form-control" data-error="Please enter details.">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label" for="title">Meta Title</label>
-                                            <input type="" name="meta_title" class="form-control" data-error="Please enter details." required>
+                                            <label class="control-label" for="dimension">Kích thước</label>
+                                            <input type="" name="dimension" class="form-control">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label" for="title">Meta Description</label>
-                                            <input type="" name="meta_description" class="form-control" data-error="Please enter details." required>
+                                            <label class="control-label" for="sorder">Sorder</label>
+                                            <input type="" name="sorder" class="form-control">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label" for="title">Meta Keywords</label>
-                                            <input type="" name="meta_keywords" class="form-control" data-error="Please enter details." required>
+                                            <label class="control-label" for="meta_title">Meta Title</label>
+                                            <input type="" name="meta_title" class="form-control">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="meta_description">Meta Description</label>
+                                            <input type="" name="meta_description" class="form-control">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="meta_keywords">Meta Keywords</label>
+                                            <input type="" name="meta_keywords" class="form-control">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                         <div class="form-group">
 
-                                            <label class="control-label" for="title">Bảo hành:</label>
+                                            <label class="control-label" for="warranty">Bảo hành:</label>
 
-                                            <input name="warranty" class="form-control" value="12 tháng" data-error="Please enter details." required>
+                                            <input name="warranty" class="form-control" value="12 tháng">
 
                                             <div class="help-block with-errors"></div>
                                         </div>
@@ -142,9 +172,9 @@
                                 </div>
 
                                 
-                                
+                                @csrf
                                 <div class="form-group">
-                                    <button type="submit" class="btn crud-submit btn-success">Submit</button>
+                                    <button type="submit" class="btn crud-submit btn-success">Thêm mới</button>
 
                                 </div>
 
@@ -160,8 +190,8 @@
         </div>   
     </div>
     <div class="col-md-8">
-        <div class="pull-left">
-            <h2>Danh sách sản phẩm</h2>
+        <div class="title-product" pull-left">
+            <h4>Danh sách sản phẩm</h4>
         </div>
         <table class="table table-bordered">
             <thead>
@@ -191,7 +221,7 @@
 
 
 
-<div class="modal fade" id="edit-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade width" id="edit-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 
     <div class="modal-dialog" role="document">
 
@@ -211,81 +241,119 @@
 
                 <form data-toggle="validator" action="/item-ajax/14" method="put">
                     <ul class="nav nav-tabs">
-                      <li class="active"><a data-toggle="tab" href="#edit-pages1">Sửa thông nhanh</a></li>
+                      <li class="active"><a data-toggle="tab" href="#edit-pages1">Thông tin cơ bản</a></li>
                       <li><a data-toggle="tab" href="#edit-pages2">Chi tiết</a></li>
                   </ul>
 
                   <div class="tab-content">
                       <div id="edit-pages1" class="tab-pane fade in active">
+                          <br>
+                          <div class="form-group">
+
+                            <label class="control-label" for="title">Tên sản phẩm:</label>
+
+                            <input type="text" name="title" id="title" class="form-control" data-error="Tên sản phẩm không được để trống." required />
+
+                            <div class="help-block with-errors"></div>
+
+                        </div>
+
                         <div class="form-group">
-
-                    <label class="control-label" for="title">Tên sản phẩm:</label>
-
-                    <input type="text" name="title" class="form-control" data-error="Tên sản phẩm không được để trống." required />
-
-                    <div class="help-block with-errors"></div>
-
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="title">Đường dẫn tĩnh:</label>
-                    <input name="slug" class="form-control" data-error="Đường dẫn không được để trống." required>
-                    <div class="help-block with-errors"></div>
-                </div>
-<div class="form-group">
-                    <label class="control-label" for="title">Giá:</label>
-                    <input name="price" class="form-control" data-error="Đường dẫn không được để trống." required>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="title">Meta Title</label>
-                    <input name="meta_title" class="form-control" data-error="Đường dẫn không được để trống." required>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="title">Meta Description</label>
-                    <input name="meta_description" class="form-control" data-error="Đường dẫn không được để trống." required>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="title">Meta Keywords</label>
-                    <input name="meta_keywords" class="form-control" data-error="Đường dẫn không được để trống." required>
-                    <div class="help-block with-errors"></div>
-                </div>
+                            <label class="control-label" for="slug">Đường dẫn tĩnh:</label>
+                            <input name="slug" class="form-control" data-error="Đường dẫn không được để trống." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="slug">Mô tả ngắn:</label>
+                            <input name="short_description" class="form-control">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="slug">Kích thước:</label>
+                            <input name="dimension" class="form-control">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="slug">Sorder</label>
+                            <input name="sorder" class="form-control">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="slug">Mã sản phẩm</label>
+                            <input name="product_code" class="form-control">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                            <input type="hidden" name="modified_by" value="{{Auth::user()->user_name}}">
+                        <div class="form-group">
+                            <label class="control-label" for="price">Giá:</label>
+                            <input name="price" class="form-control" data-error="Đường dẫn không được để trống." >
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="meta_title">Meta Title</label>
+                            <input name="meta_title" class="form-control" data-error="Đường dẫn không được để trống." >
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="meta_description">Meta Description</label>
+                            <input name="meta_description" class="form-control" data-error="Đường dẫn không được để trống.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="meta_keywords">Meta Keywords</label>
+                            <input name="meta_keywords" class="form-control" data-error="Đường dẫn không được để trống." >
+                            <div class="help-block with-errors"></div>
+                        </div>
                     </div>
                     <div id="edit-pages2" class="tab-pane fade">
-                       <div class="form-group">
-                    <label class="control-label" for="title">Đặc tính:</label>
-                    <input name="feature" class="form-control" data-error="Đường dẫn không được để trống." required>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="title">Thông số kỹ thuật:</label>
-                    <input name="specifications" class="form-control" data-error="Đường dẫn không được để trống." required>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="title">Catalog:</label>
-                    <input name="catalog" class="form-control" data-error="Đường dẫn không được để trống." required>
-                    <div class="help-block with-errors"></div>
-                    <input type="hidden" name="created_by" value="{{Auth::user()->username}}">
-                </div>
-                
-                <div class="form-group">
-                    <label class="control-label" for="title">Bảo hành:</label>
-                    <input name="warranty" class="form-control" data-error="Đường dẫn không được để trống." required>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="title">Danh mục</label>
-                    <input name="warranty" class="form-control" data-error="Đường dẫn không được để trống." required>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="title">Ảnh</label>
-                    <input name="cover_image" type="file" class="form-control" data-error="Đường dẫn không được để trống." required>
-                    <div class="help-block with-errors"></div>
-                </div>
+                        <br>
+                        <div class="form-group">
+                            <label class="control-label" for="feature">Đặc tính:</label>
+                            <input name="feature" class="form-control" data-error="Đường dẫn không được để trống.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="specifications">Thông số kỹ thuật:</label>
+                            <input name="specifications" class="form-control" data-error="Đường dẫn không được để trống.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="dimension">Khuyến mãi</label>
+                            <input name="dimension" class="form-control" data-error="Đường dẫn không được để trống.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="dimension">Download ID</label>
+                            <input name="download_id" class="form-control" data-error="Đường dẫn không được để trống.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="catalog">Catalog:</label>
+                            <input name="catalog" class="form-control" data-error="Đường dẫn không được để trống.">
+                            <div class="help-block with-errors"></div>
+                            <input type="hidden" name="created_by" value="{{Auth::user()->username}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="warranty">Bảo hành:</label>
+                            <input name="warranty" class="form-control" data-error="Đường dẫn không được để trống.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="warranty">Danh mục</label>
+                            <input name="warranty" class="form-control" data-error="Bạn chưa chọn danh múc" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="status">Trạng thái</label>
+                            <input name="status" class="form-control" data-error="Đường dẫn không được để trống.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="cover_image">Ảnh</label>
+                            <input name="cover_image" type="file" class="form-control" data-error="Đường dẫn không được để trống.">
+                            <div class="help-block with-errors"></div>
+                        </div>
                     </div>
                 </div>
                 
@@ -306,6 +374,20 @@
 
 </div>
 </div>
+<script>
+$(document).ready(function() {
+        $("#formDemo").validate({
+            rules: {
+                title: "required",
+                slug: "required"
+            },
+            messages: {
+                ho: "Vui lòng nhập họ",
+                ten: "Vui lòng nhập tên"
+            }
+        });
+    });
+</script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.3.1/jquery.twbsPagination.min.js"></script>
@@ -317,11 +399,15 @@
     var url = "<?php echo route('post.index')?>";
 </script>
 <script src="{{url('public/js/posts-ajax.js')}}"></script> 
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script>
+
     $(document).ready(function(){
         $(".nav-tabs a").click(function(){
             $(this).tab('show');
         });
     });
 </script>
+
 @stop()

@@ -70,3 +70,11 @@
 .table.table-bordered tbody td {
     vertical-align: baseline;
 }
+.nav-tabs li a{
+
+	font-size: 15px;
+	color: #444;
+}
+.control-label{
+	font-size: 13px;
+}
