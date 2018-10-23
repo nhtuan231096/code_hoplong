@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use Validator;
+use Response;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
@@ -39,6 +40,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+       // return response()->json($request->upload_file);die;
+       // return response()->json($request->all());die;
+
         // $this->validate($request,[
         //     'title'=>'required|unique:product,title',
         //     'slug'=>'required|unique:product,slug'
@@ -55,23 +59,23 @@ class ProductController extends Controller
             'meta_title' => 'max:70',
             'meta_description' => 'max:170'
         ],[
-             'title.required'=>'Ten khong duoc de trong',
-             'category_id.required'=>'Danh muc khong duoc de trong',
-            'slug.required'=>'Duong dan khong duoc de trong',
-            'slug.unique'=>'Duong dan da ton tai',
-            'title.unique'=>'Ten da ton tai',
-            'meta_title.max' => 'meta_title qua :max ky tu',
-            'meta_description.max' => 'meta_description qua :max ky tu'
+             'title.required'=>'Tên không được để trống',
+             'category_id.required'=>'Bạn chưa chọn danh mục',
+            'slug.required'=>'Đường dẫn không được để trống',
+            'slug.unique'=>'Đường dẫn đã tồn tại',
+            'title.unique'=>'Tên đã tồn tại',
+            'meta_title.max' => 'Meta Title vượt quá :max ký tự',
+            'meta_description.max' => 'Meta Description vượt quá :max ký tự'
         ]);
         
         if ($validator->fails())
         {
-            return response()->json(['error'=>$validator->errors()->all()]);
+            return Response::json(['errors' => $validator->errors()]);
         }
         if ($validator->passes()) 
         {
-        $posts = Product::create($request->all());
-        return response()->json($posts);
+            $posts = Product::create($request->all());
+            return response()->json($posts);
         }
     }
 
@@ -98,6 +102,11 @@ class ProductController extends Controller
     {
         Product::find($id)->delete();
         return response()->json(['done']);
+    }
+
+    public function edit($id){
+        $data = Product::find($id);
+         return response()->json($data);
     }
 }
  ?>

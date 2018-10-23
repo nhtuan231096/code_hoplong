@@ -32,7 +32,7 @@
 
 
 
-                                <form data-toggle="validator" id="formDemo" method="GET" action="{{ route('post.store') }}">
+                                <form data-toggle="validator" id="formDemo" method="GET" action="{{ route('post.store') }}" enctype="multipart/form-data">
 
                                     <ul class="nav nav-tabs" style="font-style:20px">
                                       <li class="active "><a data-toggle="tab" href="#home">Thông tin cơ bản</a></li>
@@ -48,7 +48,7 @@
 
                                             <input type="text" name="title" id="name" class="form-control" required>
                                             
-                                            <p class="errorTitle text-center alert alert-danger hidden"></p>
+                                            <p class="error error_title hidden"></p>
 
                                         </div>
 
@@ -58,7 +58,7 @@
 
                                             <input type="text" name="slug" id="slug" class="form-control" required>
 
-                                            <p class="errorSlug text-center alert alert-danger hidden"></p>
+                                            <p class="error error_slug hidden"></p>
 
                                         </div>
                                         <div class="form-group">
@@ -113,7 +113,7 @@
                                                 @endforeach
                                                 
                                             </select>
-                                            <div class="help-block with-errors"></div>
+                                            <div class="error error_category_id help-block with-errors hidden"></div>
                                         </div>
                                     </div>
                                     <div id="menu1" class="tab-pane fade">
@@ -128,7 +128,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="upload_file">Ảnh</label>
-                                            <input type="file" name="upload_file" class="form-control" data-error="Please enter details.">
+                                            <input type="file" name="upload_file" class="form-control" id="upload_file" data-error="Please enter details.">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                         <div class="form-group">
@@ -144,12 +144,12 @@
                                         <div class="form-group">
                                             <label class="control-label" for="meta_title">Meta Title</label>
                                             <input type="" name="meta_title" class="form-control">
-                                            <div class="help-block with-errors"></div>
+                                            <p class="error error_meta_title hidden"></p>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="meta_description">Meta Description</label>
                                             <input type="" name="meta_description" class="form-control">
-                                            <div class="help-block with-errors"></div>
+                                            <p class="error error_meta_description hidden"></p>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="meta_keywords">Meta Keywords</label>
@@ -219,7 +219,7 @@
 
 <div class="modal fade width" id="edit-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
 
         <div class="modal-content">
 
@@ -227,7 +227,7 @@
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 
-                <h4 class="modal-title" id="myModalLabel">Sửa thông tin sản phẩm</h4>
+                <h4 class="modal-title"  >Sửa thông tin sản phẩm</h4>
 
             </div>
 
@@ -235,7 +235,7 @@
 
 
 
-                <form data-toggle="validator" action="/item-ajax/14" method="put">
+                <form id="formEdit" data-toggle="validator" action="/item-ajax/14" method="put">
                     <ul class="nav nav-tabs">
                       <li class="active"><a data-toggle="tab" href="#edit-pages1">Thông tin cơ bản</a></li>
                       <li><a data-toggle="tab" href="#edit-pages2">Chi tiết</a></li>
@@ -305,7 +305,7 @@
                         <br>
                         <div class="form-group">
                             <label class="control-label" for="feature">Đặc tính:</label>
-                            <input name="feature" class="form-control" data-error="Đường dẫn không được để trống.">
+                            <input name="feature" class="form-control">
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
@@ -337,7 +337,11 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="warranty">Danh mục</label>
-                            <input name="warranty" class="form-control" data-error="Bạn chưa chọn danh múc" required>
+                            <select name="category_id" id="inputCategory_id" class="form-control" >
+                                @foreach($cates as $cate)
+                                <option value="{{$cate->id}}">{{$cate->title}}</option>
+                                @endforeach
+                            </select>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
