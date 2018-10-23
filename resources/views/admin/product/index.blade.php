@@ -2,10 +2,6 @@
 @section('title','Danh sách sản phẩm')
 @section('links','Danh mục')    
 @section('main')
-<!-- Load Thư viện jQuery vào trước khi load jQuery Validate-->
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
-
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="main-pro">
     <div class="row">
@@ -360,7 +356,7 @@
                 
                 
                 <div class="form-group">
-
+                    
                     <button type="submit" class="btn btn-success crud-submit-edit">Submit</button>
 
                 </div>
@@ -374,40 +370,15 @@
 
 </div>
 </div>
-<script>
-$(document).ready(function() {
-        $("#formDemo").validate({
-            rules: {
-                title: "required",
-                slug: "required"
-            },
-            messages: {
-                ho: "Vui lòng nhập họ",
-                ten: "Vui lòng nhập tên"
-            }
-        });
-    });
-</script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.3.1/jquery.twbsPagination.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 
 <script type="text/javascript">
     var url = "<?php echo route('post.index')?>";
 </script>
 <script src="{{url('public/js/posts-ajax.js')}}"></script> 
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-<script>
 
-    $(document).ready(function(){
-        $(".nav-tabs a").click(function(){
-            $(this).tab('show');
-        });
-    });
-</script>
 
 @stop()

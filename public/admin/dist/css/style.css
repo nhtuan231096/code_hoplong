@@ -78,3 +78,7 @@
 .control-label{
 	font-size: 13px;
 }
+.modal-backdrop {
+    /* bug fix - no overlay */    
+    display: none;    
+}

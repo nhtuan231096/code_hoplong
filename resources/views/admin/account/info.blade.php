@@ -45,7 +45,7 @@
 								<td>{{Auth::user()->email}}</td>
 							</tr>
 							<tr>
-								<th>Quyền admin </th>
+								<th>Quyền admin</th>
 								<td>:</td>
 								<td>{{Auth::user()->group->title}}</td>
 							</tr>
@@ -61,18 +61,19 @@
 												<h4 class="modal-title">Đổi mật khẩu</h4>
 											</div>
 											<div class="modal-body">
-												<form action="" method="POST" role="form">
+												<form action="{{route('changePassword')}}" method="POST" role="form">
 													<div class="form-group">
 														<label for="">Mật khẩu cũ</label>
-														<input type="password" class="form-control" id="" placeholder="Nhập mật khẩu cũ">
+														<input type="password" class="form-control" name="oldPass" id="" placeholder="Nhập mật khẩu cũ" data-error="Mật khẩu không được để trống" required>
 													</div>	
 													<div class="form-group">
 														<label for="">Mật khẩu mới</label>
-														<input type="password" class="form-control" id="" placeholder="Nhập mật khẩu mới">
+														<input type="password" class="form-control" name="password" id="" data-error="Mật khẩu không được để trống" required placeholder="Nhập mật khẩu mới">
 													</div>	
+													@csrf
 													<div class="modal-footer">
 														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-														<button type="button" class="btn btn-primary">Đổi mật khẩu</button>
+														<button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
 													</div>
 												</form>
 											</div>

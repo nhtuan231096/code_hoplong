@@ -98,5 +98,8 @@ class AccountController extends Controller
 			return redirect()->back()->with('error','Cập nhật tài khoản không thành công');
 		}
 	}
+	public function changePassword(Request $req){
+		
+	}
 }
  ?>
