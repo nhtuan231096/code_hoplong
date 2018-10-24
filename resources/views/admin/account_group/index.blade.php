@@ -118,7 +118,7 @@
     </div>
 
 	<!-- Modal form to edit a form -->
-    <div id="editModal" class="modal fade" role="dialog">
+    <div id="editModal" class="modal fade" role="dialog" >
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -194,7 +194,7 @@
 
     <!-- jQuery -->
 
-    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+
 
     <!-- Bootstrap JavaScript -->
    
@@ -242,10 +242,10 @@
     <!-- AJAX CRUD operations -->
     <script type="text/javascript">
         // add a new post
-        $(document).on('click', '.add-modal', function() {
-            $('.modal-title').text('Add');
-            $('#addModal').modal('show');
-        });
+        // $(document).on('click', '.add-modal', function() {
+        //     $('.modal-title').text('Add');
+        //     $('#addModal').modal('show');
+        // });
         $('.modal-footer').on('click', '.add', function() {
             $.ajax({
                 type: 'POST',
@@ -296,6 +296,7 @@
                                 success: function(data) {
                                     // empty
                                 },
+                                
                             });
                         });
                         $('.col1').each(function (index) {
@@ -305,7 +306,7 @@
                 },
             });
         });
-
+        
         // Show a post
         $(document).on('click', '.show-modal', function() {
             $('.modal-title').text('Show');
