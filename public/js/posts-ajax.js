@@ -81,18 +81,28 @@ $(".crud-submit").click(function(e) {
         url: form_action,
         data:data_form,
         success:function(res){
+<<<<<<< HEAD
             // console.log(res);
            if (res.errors) {
             toastr.error('Validation error!', 'Error', {timeOut: 5000});
+=======
+            getPageData();
+            toastr.success('success', 'Success Alert', {timeOut: 5000});
+            // console.log(res);
+           if (res.errors) {
+>>>>>>> 210b3751eabcf488de0c6345936acdf8eb2baf02
             for(var er in res.errors){
                 $('.error_'+er).html(res.errors[er][0]);
                 $('.error_'+er).removeClass('hidden');
             }
            }
+<<<<<<< HEAD
            else{
             getPageData();
             toastr.success('errors', 'Success Alert', {timeOut: 5000});
            }
+=======
+>>>>>>> 210b3751eabcf488de0c6345936acdf8eb2baf02
         }
     });
 });
@@ -100,7 +110,11 @@ $(".crud-submit").click(function(e) {
 /* Remove Post */
 $("body").on("click",".remove-item",function() {
     var id = $(this).parent("td").data('id');
+<<<<<<< HEAD
     var status = "delete";
+=======
+    var status = $("#edit-item").find("input[name='status']").val();
+>>>>>>> 210b3751eabcf488de0c6345936acdf8eb2baf02
     var c_obj = $(this).parents("tr");
     $.ajax({
         dataType: 'json',
@@ -118,7 +132,11 @@ $("body").on("click",".remove-item",function() {
 $("body").on("click",".edit-item",function() {
     var id = $(this).parent("td").data('id');
     $.ajax({
+<<<<<<< HEAD
         url:'/code_hoplong-master/admin/product/edit/'+id,
+=======
+        url:'http://localhost:8888/code_hoplong/admin/product/edit/'+id,
+>>>>>>> 210b3751eabcf488de0c6345936acdf8eb2baf02
         type:'GET',
         success:function(res){
             console.log(res);
@@ -157,7 +175,7 @@ $(".crud-submit-edit").click(function(e) {
         data:data_form
     }).done(function(data){
         getPageData();
-        $(".modal").modal('hide');
+        // $(".modal").modal('hide');
         toastr.success('Post Updated Successfully.', 'Success Alert', {timeOut: 5000});
     });
 });

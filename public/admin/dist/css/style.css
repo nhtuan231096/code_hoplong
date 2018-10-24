@@ -78,6 +78,7 @@
 .control-label{
 	font-size: 13px;
 }
+<<<<<<< HEAD
 
 .modal-backdrop {
     /* bug fix - no overlay */    
@@ -89,4 +90,9 @@
 }
 .title-product{
 	padding: 0.5% 0;
+=======
+.modal-backdrop {
+    /* bug fix - no overlay */    
+    display: none;    
+>>>>>>> 210b3751eabcf488de0c6345936acdf8eb2baf02
 }
