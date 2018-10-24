@@ -304,7 +304,6 @@ desired effect
 <!-- ./wrapper -->
 
 <script src="{{url('public/admin')}}/tinymce/tinymce.min.js"></script>
-<script src="{{url('public/admin')}}/tiny_mce/tiny_mce/tinymce.min.js"></script>
 <script src="{{url('public/admin')}}/tinymce/config.js"></script>
 <script src="{{url('public/admin')}}/dist/js/adminlte.min.js"></script>
 
