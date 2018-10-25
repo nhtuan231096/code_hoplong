@@ -113,7 +113,6 @@ class ProductController extends Controller
         $data = Product::find($id);
          return response()->json($data);
     }
-<<<<<<< HEAD
     public function trash(){
         $posts = Product::where('status','delete')->latest()->paginate(14);
         return view('admin.product.trash',[
@@ -147,7 +146,5 @@ class ProductController extends Controller
             return redirect()->back()->with('error','Lỗi khi xóa');
         }
     }
-=======
->>>>>>> 210b3751eabcf488de0c6345936acdf8eb2baf02
 }
  ?>
