@@ -61,7 +61,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="specifications">Thông số kỹ thuật:</label>
+<<<<<<< HEAD
                                             <textarea type="text" id="content" name="specifications" class="editor_short form-control"></textarea>
+=======
+                                            <textarea type="text" id="" name="specifications" class="editor_short form-control"></textarea>
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
                                         
                                             <div class="help-block with-errors"></div>
 
@@ -70,14 +74,30 @@
 
                                             <label class="control-label" for="feature">Đặc tính:</label>
 
+<<<<<<< HEAD
                                             <textarea type="text" id="content" name="feature" class="editor_short form-control"></textarea>
+=======
+                                            <textarea type="text" name="feature" class="editor_short form-control"></textarea>
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
 
                                             <div class="help-block with-errors"></div>
 
                                         </div>
                                         <div class="form-group">
+<<<<<<< HEAD
                                             <label class="control-label" for="content">Tổng quan:</label>
                                             <textarea type="text" id="content" name="contents" class="editor_short form-control"></textarea>
+=======
+                                            <label class="control-label" for="specifications">Tổng quan:</label>
+                                            <textarea type="text" id="desc" name="specifications" class="editor_short form-control"></textarea>
+                                        
+                                            <div class="help-block with-errors"></div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="specifications">Lineup:</label>
+                                            <textarea type="text" id="desc" name="specifications" class="editor_short form-control"></textarea>
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
                                         
                                             <div class="help-block with-errors"></div>
 
@@ -140,16 +160,52 @@
                                                 
                                             </select>
                                             <div class="error error_category_id help-block with-errors hidden"></div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> 7bab49749c4e91ce60f244e053f39fd6a28ed1c6
+                                        </div>
+                                    </div>
+                                    <div id="menu1" class="tab-pane fade">
+                                        <br>
+                                        <div class="form-group">
+                                            <label class="control-label" for="promotion">Khuyến mãi</label>
+                                            <input type="text" name="promotion" id="promotion" class="form-control">
+<<<<<<< HEAD
+
+=======
+>>>>>>> 7bab49749c4e91ce60f244e053f39fd6a28ed1c6
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="download_id">ID tải xuống</label>
                                             <input type="text" name="download_id" id="promotion" placeholder="ID tải xuống" class="form-control">
                                         </div>
                                         <div class="form-group">
+<<<<<<< HEAD
                                             <label class="control-label" for="download_id">Loại sản phẩm</label>
                                             <select name="" id="input" class="form-control" required="required">
                                                 <option value=""></option>
                                             </select>
+=======
+<<<<<<< HEAD
+
+                                            <label class="control-label" for="download_id">Loại sản phẩm</label>
+
+
+                                            <label class="control-label" for="upload_file">Ảnh</label>
+                                            <input type="file" name="upload_file" class="form-control" id="upload_file" data-error="Please enter details.">
+                                            <div class="help-block with-errors"></div>
+
+=======
+                                            <label class="control-label" for="download_id">Loại sản phẩm</label>
+                                            <label class="control-label" for="upload_file">Ảnh</label>
+                                            <input type="file" name="upload_file" class="form-control" id="upload_file" data-error="Please enter details.">
+                                            <div class="help-block with-errors"></div>
+>>>>>>> 7bab49749c4e91ce60f244e053f39fd6a28ed1c6
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
                                         </div>
                                     </div>
                                     <div id="menu1" class="tab-pane fade">
@@ -162,17 +218,29 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="sorder">Sorder</label>
+<<<<<<< HEAD
                                             <input type="" name="sorder" id="sorder" placeholder="Sorder" class="form-control">
+=======
+                                            <input type="" name="sorder" placeholder="Sorder" class="form-control">
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
                                             <div class="help-block with-errors"></div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="meta_title">Meta Title</label>
                                             <input type="" name="meta_title" placeholder="Meta Title" class="form-control">
+<<<<<<< HEAD
+=======
+                                            <input type="" name="meta_title" class="form-control">
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
                                             <p class="error error_meta_title hidden"></p>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="meta_description">Meta Description</label>
                                             <input type="" name="meta_description" placeholder="Meta Description" class="form-control">
+<<<<<<< HEAD
+=======
+                                            <input type="" name="meta_description" class="form-control">
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
                                             <p class="error error_meta_description hidden"></p>
                                         </div>
                                         <div class="form-group">
@@ -210,11 +278,19 @@
         
             <div class="form-group">
                 <label class="sr-only" for=""></label>
+<<<<<<< HEAD
                 <input type="" class="form-control" id="search" name="search" placeholder="Tên sản phẩm">
             </div>
             <div class="form-group">
                 <label class="sr-only" for=""></label>
                 <select name="categoryID" id="categoryID" class="form-control">
+=======
+                <input type="" class="form-control" id="" placeholder="Tên sản phẩm">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for=""></label>
+                <select name="" id="input" class="form-control" required="required">
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
                     <option value="">Danh mục</option>
                     @foreach($cates as $cate)
                     <option value="{{$cate->id}}">{{$cate->title}}</option>
@@ -223,7 +299,11 @@
             </div>
             <div class="form-group">
                 <label class="sr-only" for=""></label>
+<<<<<<< HEAD
                 <select name="" id="input" class="form-control">
+=======
+                <select name="" id="input" class="form-control" required="required">
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
                     <option value="">Người tạo</option>
                     @foreach($users as $user)
                     <option value="{{$user->id}}">{{$user->username}}</option>
@@ -232,18 +312,28 @@
             </div>
             <div class="form-group">
                 <label class="sr-only" for=""></label>
+<<<<<<< HEAD
                 <select name="" id="input" class="form-control">
+=======
+                <select name="" id="input" class="form-control" required="required">
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
                     <option value="">Trạng thái</option>
                     <option value="enable">Enable</option>
                     <option value="disable">Disable</option>
                 </select>
             </div>
             @csrf
+<<<<<<< HEAD
             @if(Auth::user()->group_id==1)
             <div class="form-group">
                 <a class="btn btn-default" href="{{route('trash')}}">Sản phẩm đã xóa</a>
             </div>
             @endif
+=======
+            <div class="form-group">
+                <a class="btn btn-default" href="{{route('trash')}}">Sản phẩm đã xóa</a>
+            </div>
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
             <button type="submit" class="btn btn-primary fa fa-search"></button>
         </form>
         <table class="table table-bordered">
@@ -362,7 +452,11 @@
                         <br>
                         <div class="form-group">
                             <label class="control-label" for="feature">Đặc tính:</label>
+<<<<<<< HEAD
                             <textarea name="feature" id="content" class="form-control"></textarea>
+=======
+                            <input name="feature" class="form-control">
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
@@ -392,8 +486,17 @@
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <label class="control-label" for="warranty">Bảo hành:</label>
                             <input name="warranty" class="form-control">
+=======
+                            <label class="control-label" for="warranty">Danh mục</label>
+                            <select name="category_id" id="inputCategory_id" class="form-control" >
+                                @foreach($cates as $cate)
+                                <option value="{{$cate->id}}">{{$cate->title}}</option>
+                                @endforeach
+                            </select>
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
@@ -422,6 +525,10 @@
                 <div class="form-group">
                     
                     <button type="submit" class="btn btn-success crud-submit-edit">Submit</button>
+<<<<<<< HEAD
+=======
+                    <a href="" class="btn btn-md btn-primary">Sửa chi tiết</a>
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
                 </div>
 
             </form>
@@ -436,12 +543,18 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.3.1/jquery.twbsPagination.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
+<<<<<<< HEAD
 <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script> -->
+=======
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
 <script type="text/javascript">
     var url = "<?php echo route('post.index')?>";
 </script>
 <script src="{{url('public/js/posts-ajax.js')}}"></script> 
 
+<<<<<<< HEAD
 <script>
 $(document).ready(function(){
 
@@ -475,4 +588,7 @@ $(document).ready(function(){
         alert(statusID);
     })
 </script>
+=======
+
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
 @stop()

@@ -78,6 +78,10 @@
 .control-label{
 	font-size: 13px;
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
 
 .modal-backdrop {
     /* bug fix - no overlay */    
@@ -85,6 +89,7 @@
 }
 .error{
 	font-style: italic;
+<<<<<<< HEAD
 	color: red !important;
 }
 .title-product{
@@ -92,4 +97,15 @@
 }
 .help-block{
 	color: red;
+=======
+	color: red;
+}
+.title-product{
+	padding: 0.5% 0;
+=======
+.modal-backdrop {
+    /* bug fix - no overlay */    
+    display: none;    
+>>>>>>> 210b3751eabcf488de0c6345936acdf8eb2baf02
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
 }

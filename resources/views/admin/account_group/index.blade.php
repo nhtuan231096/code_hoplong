@@ -237,10 +237,17 @@
     <!-- AJAX CRUD operations -->
     <script type="text/javascript">
         // add a new post
+<<<<<<< HEAD
         $(document).on('click', '.add-modal', function() {
             $('.modal-title').text('Tạo nhóm tài khoản');
             $('#addModal').modal('show');
         });
+=======
+        // $(document).on('click', '.add-modal', function() {
+        //     $('.modal-title').text('Add');
+        //     $('#addModal').modal('show');
+        // });
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
         $('.modal-footer').on('click', '.add', function() {
             $.ajax({
                 type: 'POST',

@@ -83,7 +83,10 @@ $(".crud-submit").click(function(e) {
         success:function(res){
             // console.log(res);
            if (res.errors) {
+<<<<<<< HEAD
             toastr.error('Validation error!', 'Error', {timeOut: 5000});
+=======
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
             for(var er in res.errors){
                 $('.error_'+er).html(res.errors[er][0]);
                 $('.error_'+er).removeClass('hidden');
@@ -118,15 +121,25 @@ $("body").on("click",".remove-item",function() {
 $("body").on("click",".edit-item",function() {
     var id = $(this).parent("td").data('id');
     $.ajax({
+<<<<<<< HEAD
         url:'/code_hoplong/admin/product/edit/'+id,
+=======
+        url:'http://localhost:8888/code_hoplong/admin/product/edit/'+id,
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
         type:'GET',
         success:function(res){
             console.log(res);
             $("#edit-item").find("input[name='title']").val(res.title);
+<<<<<<< HEAD
             // $("#edit-item").find("select[name='status']").val(res.status);
             $("#edit-item").find("input[name='slug']").val(res.slug);
             $("#edit-item").find("textarea[name='short_description']").val(res.short_description);
             $("#edit-item").find("textarea[name='contents']").val(res.contents);
+=======
+            $("#edit-item").find("input[name='status']").val(res.status);
+            $("#edit-item").find("input[name='slug']").val(res.slug);
+            $("#edit-item").find("input[name='short_description']").val(res.short_description);
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
             $("#edit-item").find("input[name='dimension']").val(res.dimension);
             $("#edit-item").find("input[name='sorder']").val(res.sorder);
             $("#edit-item").find("textarea[name='feature']").val(res.feature);
@@ -158,7 +171,7 @@ $(".crud-submit-edit").click(function(e) {
         data:data_form
     }).done(function(data){
         getPageData();
-        $(".modal").modal('hide');
+        // $(".modal").modal('hide');
         toastr.success('Post Updated Successfully.', 'Success Alert', {timeOut: 5000});
     });
 });

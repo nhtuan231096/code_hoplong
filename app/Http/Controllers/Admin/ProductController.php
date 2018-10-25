@@ -7,7 +7,10 @@ use Response;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\User;
+<<<<<<< HEAD
 use DB;
+=======
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
 use App\Models\Category;
 
 class ProductController extends Controller
@@ -64,15 +67,25 @@ class ProductController extends Controller
             'category_id' => 'required',
             'meta_title' => 'max:70',
             'meta_description' => 'max:170'
+<<<<<<< HEAD
             ],[
             'title.required'=>'Tên không được để trống',
             'category_id.required'=>'Bạn chưa chọn danh mục',
+=======
+        ],[
+             'title.required'=>'Tên không được để trống',
+             'category_id.required'=>'Bạn chưa chọn danh mục',
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
             'slug.required'=>'Đường dẫn không được để trống',
             'slug.unique'=>'Đường dẫn đã tồn tại',
             'title.unique'=>'Tên đã tồn tại',
             'meta_title.max' => 'Meta Title vượt quá :max ký tự',
             'meta_description.max' => 'Meta Description vượt quá :max ký tự'
+<<<<<<< HEAD
             ]);
+=======
+        ]);
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
         
         if ($validator->fails())
         {
@@ -112,7 +125,11 @@ class ProductController extends Controller
 
     public function edit($id){
         $data = Product::find($id);
+<<<<<<< HEAD
         return response()->json($data);
+=======
+         return response()->json($data);
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
     }
     public function trash(){
         $posts = Product::where('status','delete')->latest()->paginate(14);
@@ -133,6 +150,7 @@ class ProductController extends Controller
         }
         else
         {
+<<<<<<< HEAD
          return redirect()->back()->with('error','Có lỗi'); 
      }
 
@@ -192,6 +210,21 @@ class ProductController extends Controller
 
       echo json_encode($data);
      }
+=======
+           return redirect()->back()->with('error','Có lỗi'); 
+        }
+        
+    }
+    public function deletePro($id){
+        $deletePro=Product::destroy($id);
+        if ($deletePro) {
+            return redirect()->back()->with('success','Đã xóa sản phẩm');
+        }
+        else
+        {
+            return redirect()->back()->with('error','Lỗi khi xóa');
+        }
+>>>>>>> af45a45c438c856859d9ddd684f8496514293696
     }
 }
 ?>
