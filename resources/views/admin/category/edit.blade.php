@@ -30,7 +30,13 @@
 		</div>
 		<div class="form-group">
 			<label for="">Danh mục cha *</label>
-			<input type="text" name="parent_id" class="form-control" value="{{$cate->parent_id}}" id="" placeholder="">
+			<select name="parent_id" id="input" class="form-control">
+			@foreach($parent as $parents)
+			<?php $selected=($cate->parent_id==$parents->id) ? 'selected' : '' ?>
+				<option {{$selected}} value="{{$parents->id}}">{{$parents->title}}</option>
+			@endforeach
+			<option value="">â</option>
+			</select>
 		</div>
 		<div class="form-group">
 			<label for="">Trạng thái</label>

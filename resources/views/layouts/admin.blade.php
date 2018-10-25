@@ -18,23 +18,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{url('public/admin')}}/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{url('public/admin')}}/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="{{url('public/admin')}}/toastr/toastr.min.css">
+  <!-- <script src="{{url('public/admin')}}/ckeditor/ckeditor.js"></script> -->
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
         <link rel="stylesheet" href="{{url('public/admin')}}/dist/css/skins/skin-blue.min.css">
         <link rel="stylesheet" href="{{url('public/admin')}}/dist/css/style.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
   <!-- Google Font -->
   <link rel="stylesheet"
   href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <script src="https://code.jquery.com/jquery-2.2.4.js" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+
+
+
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -155,8 +156,22 @@ desired effect
           @if(Auth::user()->group_id==1)
           <li><a href="{{route('category')}}"><i class="fa fa-table"></i> <span>Danh mục sản phẩm</span></a></li>
           <li><a href="{{route('partners')}}"><i class="fa fa-th"></i> <span>Hãng sản phẩm</span></a></li>
+          <li><a href="{{route('partners')}}"><i class="fa fa-briefcase"></i> <span>Quản lý bán hàng</span></a></li>
           <li><a href="#"><i class="fa fa-image"></i> <span>Quản lý banner</span></a></li>
           <li><a href="#"><i class="fa fa-users"></i><span>Supporter</span></a></li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-cogs"></i> <span>Cấu hình</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href=""><i class="fa fa-cog"></i>List widgets</a></li>
+              <li><a href=""><i class="fa fa-object-group"></i>Web Configs</a></li>
+              <li><a href=""><i class="fa fa-server"></i>Service</a></li>
+              <li><a href=""><i class="fa fa-download"></i>Dowload service</a></li>
+            </ul>
+          </li>
           <li class="treeview">
             <a href="#"><i class="fa fa-user"></i> <span>Tài khoản</span>
               <span class="pull-right-container">
@@ -300,14 +315,14 @@ desired effect
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
-{{-- <script type="text/javascript" src="{{ asset('toastr/toastr.min.js') }}"></script> --}}
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="{{url('public/admin')}}/tinymce/tinymce.min.js"></script>
-<script src="{{url('public/admin')}}/tinymce/config.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="{{url('public/admin')}}/dist/js/adminlte.min.js"></script>
+
+  <script src="{{url('public/admin')}}/tinymce/config.js"></script>
+  <script src="{{url('public/admin')}}/toastr/toastr.min.js"></script>
+  <!-- <script src="{{url('public/admin')}}/tinymce.js"></script> -->
+
 
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.

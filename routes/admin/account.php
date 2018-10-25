@@ -15,4 +15,5 @@ Route::get('/delete-account/{id}','AccountController@deleteAccount')->name('dele
 Route::get('/edit-account/{id}','AccountController@editAccount')->name('editAccount');
 Route::post('/edit-account/{id}','AccountController@postEditAccount')->name('editAccount');
 Route::get('/info-account','AccountController@infoAccount')->name('infoAccount');
+Route::post('/info-account/change-password','AccountController@changePassword')->name('changePassword');
  ?>

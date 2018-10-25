@@ -5,9 +5,9 @@
 .butt{
 	margin: 5px !important;
 }
-.content-wrapper{
+/*.content-wrapper{
 	position: relative;
-}
+}*/
 .panel-heading {
 	padding: 0;
 }
@@ -77,4 +77,19 @@
 }
 .control-label{
 	font-size: 13px;
+}
+
+.modal-backdrop {
+    /* bug fix - no overlay */    
+    display: none;    
+}
+.error{
+	font-style: italic;
+	color: red !important;
+}
+.title-product{
+	padding: 0.5% 0;
+}
+.help-block{
+	color: red;
 }

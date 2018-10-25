@@ -13,7 +13,7 @@ class AccountController extends Controller
 	
 	function index()
 	{	
-		$account=User::paginate(15);
+		$account=User::search()->paginate(15);
 		if(Auth::user()->group_id==2){
 			$account=User::where('group_id',3)->paginate(15);
 		}
@@ -27,6 +27,23 @@ class AccountController extends Controller
 		return view('admin.account.info');
 	}
 	public function addAccount(Request $req){
+		$this->validate($req,[
+			'username' => 'required|min:4',
+			'email' => 'required|unique:user,email|email',
+			'fullname' => 'required',
+			'password' => 'required|min:6',
+			'confirmPassword' => 'same:password'
+			],[
+			'username.required' => 'Tên tài khoản không được để trống',
+			'email.required' => 'Email không được để trống',
+			'fullname.required' => 'Tên không được để trống',
+			'password.required' => 'Mật khẩu không được để trống',
+			'confirmPassword.same' => 'Mật khẩu không trùng khớp',
+			'username.min' => 'Tên ít nhất :min ký tự',
+			'email.unique' => 'Email đã tồn tại',
+			'email.email' => 'Email không đúng địnhh dạng',
+			'password.min' => 'Mật khẩu ít nhất :min ký tự'
+			]);
 		$img='';
 		if($req->hasFile('upload_file')) {
 			$file=$req->upload_file;
@@ -97,6 +114,9 @@ class AccountController extends Controller
 		{
 			return redirect()->back()->with('error','Cập nhật tài khoản không thành công');
 		}
+	}
+	public function changePassword(Request $req){
+		
 	}
 }
  ?>

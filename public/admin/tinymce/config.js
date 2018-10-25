@@ -1,7 +1,31 @@
 tinymce.init({
     selector: 'textarea#content',
+        plugins: "image code",
+    image_title: true,
+    automatic_uploads: true,
+    file_picker_types: 'image',
+    file_picker_callback: function(cb, value, meta) {
+        var input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', 'image/*');
+        input.onchange = function () {
+            var file = this.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function () {
+                var id = 'blobid' + (new Date()).getTime();
+                var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                var base64 = reader.result.split(',')[1];
+                var blobInfo = blobCache.create(id, file, base64);
+                blobCache.add(blobInfo);
+                cb(blobInfo.blobUri(), {title: file.name});
+            };
+            reader.readAsDataURL(file);
+        };
+        input.click();
+    },
     // theme : "advanced",
-    height: 350,
+    height: 100,
     width:"",
     plugins: [
         "codemirror advlist autolink lists link image charmap print preview hr anchor pagebreak",
@@ -9,7 +33,7 @@ tinymce.init({
         "insertdatetime media nonbreaking save table contextmenu directionality",
         "emoticons template paste textcolor colorpicker textpattern imagetools code fullscreen"
     ],
-    toolbar1: "undo redo bold italic underline strikethrough cut copy paste| alignleft aligncenter alignright alignjustify bullist numlist outdent indent blockquote searchreplace | table | hr removeformat | subscript superscript | charmap emoticons ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft | link unlink anchor image media | insertdatetime preview | forecolor backcolor print fullscreen code",
+    toolbar1: "undo redo bold italic underline strikethrough | alignleft aligncenter alignright alignjustify bullist numlist outdent indent blockquote | table | hr removeformat | subscript superscript  | spellchecker | visualchars visualblocks template pagebreak restoredraft | link unlink anchor image media | insertdatetime preview | forecolor backcolor print fullscreen code",
     toolbar2: "styleselect formatselect fontselect fontsizeselect",
     image_advtab: true,
     menubar: false,
@@ -148,10 +172,9 @@ var title, slug;
     slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
     slug = slug.replace(/đ/gi, 'd');
     //Xóa các ký tự đặt biệt
-    slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
+    slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
     //Đổi khoảng trắng thành ký tự gạch ngang
     slug = slug.replace(/ /gi, "-");
-    slug = slug.replace(/\./gi, "-");
     //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
     //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
     slug = slug.replace(/\-\-\-\-\-/gi, '-');

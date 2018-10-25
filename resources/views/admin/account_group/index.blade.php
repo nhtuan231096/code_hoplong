@@ -4,7 +4,7 @@
 @section('main')
         <div class="panel panel-default">
             <div class="panel-heading">
-                    <a href="#" class="add-modal btn btn-md btn-primary">Thêm tài khoản</a>
+                    <a href='#addModal' data-toggle="modal" class="add-modal btn btn-md btn-primary">Thêm nhóm</a>
             </div>
         
             <div class="panel-body">
@@ -63,13 +63,6 @@
                                 <p class="errorTitle text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
-                        <div class="form-group hidden">
-                            <label class="control-label col-sm-2" for="content">Content:</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" id="content_add" value="content"></input>
-                                <p class="errorContent text-center alert alert-danger hidden"></p>
-                            </div>
-                        </div>
                     </form>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success add" data-dismiss="modal">
@@ -118,7 +111,7 @@
     </div>
 
 	<!-- Modal form to edit a form -->
-    <div id="editModal" class="modal fade" role="dialog">
+    <div id="editModal" class="modal fade" role="dialog" >
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -194,7 +187,7 @@
 
     <!-- jQuery -->
 
-    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+
 
     <!-- Bootstrap JavaScript -->
    
@@ -205,6 +198,8 @@
     <!-- icheck checkboxes -->
 
     <!-- Delay table load until everything else is loaded -->
+
+    
     <script>
         $(window).load(function(){
             $('#postTable').removeAttr('style');
@@ -243,7 +238,7 @@
     <script type="text/javascript">
         // add a new post
         $(document).on('click', '.add-modal', function() {
-            $('.modal-title').text('Add');
+            $('.modal-title').text('Tạo nhóm tài khoản');
             $('#addModal').modal('show');
         });
         $('.modal-footer').on('click', '.add', function() {
@@ -296,6 +291,7 @@
                                 success: function(data) {
                                     // empty
                                 },
+                                
                             });
                         });
                         $('.col1').each(function (index) {
@@ -305,13 +301,12 @@
                 },
             });
         });
-
+        
         // Show a post
         $(document).on('click', '.show-modal', function() {
             $('.modal-title').text('Show');
             $('#id_show').val($(this).data('id'));
             $('#title_show').val($(this).data('title'));
-            $('#content_show').val($(this).data('content'));
             $('#showModal').modal('show');
         });
 
@@ -321,7 +316,6 @@
             $('.modal-title').text('Edit');
             $('#id_edit').val($(this).data('id'));
             $('#title_edit').val($(this).data('title'));
-            $('#content_edit').val($(this).data('content'));
             id = $('#id_edit').val();
             $('#editModal').modal('show');
         });
@@ -355,7 +349,7 @@
                         }
                     } else {
                         toastr.success('Successfully updated Post!', 'Success Alert', {timeOut: 5000});
-                        $('.item' + data.id).replaceWith("<tr class='item" + data.id + "'><td class='col1'>" + data.id + "</td><td>" + data.title + "</td><td>" + data.content + "</td><td class='text-center'><input type='checkbox' class='edit_published' data-id='" + data.id + "'></td><td>Right now</td><td><button class='show-modal btn btn-success' data-id='" + data.id + "' data-title='" + data.title + "' data-content='" + data.content + "'><span class='glyphicon glyphicon-eye-open'></span> Show</button> <button class='edit-modal btn btn-info' data-id='" + data.id + "' data-title='" + data.title + "' data-content='" + data.content + "'><span class='glyphicon glyphicon-edit'></span> Edit</button> <button class='delete-modal btn btn-danger' data-id='" + data.id + "' data-title='" + data.title + "' data-content='" + data.content + "'><span class='glyphicon glyphicon-trash'></span> Delete</button></td></tr>");
+                        $('.item' + data.id).replaceWith("<tr class='item" + data.id + "'><td class='col1'>" + data.id + "</td><td>" + data.title + "</td><td>" + data.content + "</td<>td><button class='show-modal btn btn-success' data-id='" + data.id + "' data-title='" + data.title + "' data-content='" + data.content + "'><span class='glyphicon glyphicon-eye-open'></span> Show</button> <button class='edit-modal btn btn-info' data-id='" + data.id + "' data-title='" + data.title + "' data-content='" + data.content + "'><span class='glyphicon glyphicon-edit'></span> Edit</button> <button class='delete-modal btn btn-danger' data-id='" + data.id + "' data-title='" + data.title + "' data-content='" + data.content + "'><span class='glyphicon glyphicon-trash'></span> Delete</button></td></tr>");
 
                         if (data.is_published) {
                             $('.edit_published').prop('checked', true);

@@ -69,8 +69,7 @@ class Account_groupController extends Controller
 
 	protected $rules =
     [
-        'title' => 'required|min:2|max:32|regex:/^[a-z ,.\'-]+$/i',
-        'content' => 'required|min:2|max:128|regex:/^[a-z ,.\'-]+$/i'
+        'title' => 'required|min:2|max:32|regex:/^[a-z ,.\'-]+$/i'
     ];
 
 

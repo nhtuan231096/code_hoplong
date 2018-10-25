@@ -26,7 +26,7 @@
 			        <form action="" method="POST" role="form" enctype="multipart/form-data">
 			        	<div class="form-group">
 			        		<label for="">Tên danh mục *</label>
-			        		<input type="text" name="title" class="form-control" id="title" placeholder="Tên danh mục" required>
+			        		<input type="text" name="title" class="form-control" id="name" placeholder="Tên danh mục" required>
 			        		@if($errors->has('title'))
 								<div class="help-block">
 									{{$errors->first('title')}}
@@ -34,22 +34,19 @@
 			        		@endif
 			        	</div>
 			        	<div class="form-group">
-			        		<label for="">Danh mục cha</label>
-			        		<select name="parent_id" id="inputParent_id" class="form-control">
-			        			<option value="#">Chọn danh mục cha</option>
-			        			@foreach($parent as $cate)
-			        				<option value="">{{$cate->title}}</option>
-			        			@endforeach
-			        		</select>
-			        	</div>
-			        	<div class="form-group">
 			        		<label for="">Đường dẫn tĩnh *</label>
 			        		<input type="text" name="slug" class="form-control" id="slug" placeholder="Đường dẫn tĩnh" required>
 			        	</div>
 			        	<div class="form-group">
-			        		<label for="">Danh mục cha *</label>
-			        		<input type="text" name="parent_id" class="form-control" id="" placeholder="">
+			        		<label for="">Danh mục cha</label>
+			        		<select name="parent_id" id="inputParent_id" class="form-control">
+			        			<option value="#">Chọn danh mục cha *</option>
+			        			@foreach($parent as $cate)
+			        				<option value="{{$cate->id}}">{{$cate->title}}</option>
+			        			@endforeach
+			        		</select>
 			        	</div>
+			        	
 			        	<div class="form-group">
 			        		<label for="">Ảnh *</label>
 			        		<input type="file" name="upload_file" class="form-control" id="upload_file" placeholder="" required>
@@ -68,12 +65,26 @@
 			</div>
 			</div>
 			<div class="col-md-10">
-				<form action="{{route('search')}}" method="GET" class="form-inline" role="form">
+				<form action="" method="GET" class="form-inline" role="form">
 				
 					<div class="form-group">
 						<input type="" class="form-control" name="search" id="" placeholder="Tên danh mục cần tìm..">
 					</div>
-				
+					<!-- <div class="form-group">
+						<select name="created_by" id="inputCreared_by" class="form-control">
+							<option value="">Người tạo</option>
+							@foreach($users as $user)
+							<option value="{{$user->id}}">{{$user->username}}</option>
+							@endforeach
+						</select>
+					</div>
+					<div class="form-group">
+						<select name="status" id="inputStatus" class="form-control">
+							<option value="">Trạng thái</option>
+							<option value="enable">Enable</option>
+							<option value="disable">Disable</option>
+						</select>
+					</div> -->
 					@csrf
 				
 					<button type="submit" class="btn btn-info">Tìm kiếm</button>

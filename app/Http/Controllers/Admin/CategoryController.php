@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\User;
 use Illuminate\Http\Request;
 /**
 * 
@@ -18,26 +19,17 @@ class CategoryController extends Controller
 		// 		$parents=$parentid;
 		// 	}
 		// }
-		$category=Category::orderBy('id','DESC')->paginate(15);
+		$user=User::all();
+		$category=Category::search()->orderBy('id','DESC')->paginate(15);
 		$parent=Category::all();
 		// dd($category);
 		return view('admin.category.index',[
 				'cates'=>$category,
+				'users'=>$user,
 				'parent'=>$parent
 			]);
 	}
 	public function postCategory(Request $req){
-		// $this->validate($req,[
-		// 		'title' => 'required|min:6|unique:category,title',
-		// 		'slug' => 'required|min:6',
-		// 		'upload_file' => 'required'
-		// 	],[
-		// 		'title.required' => 'Tiêu đề không được để trống !!',
-		// 		'title.min' => 'Tiêu đề ít nhất :min ký tự',
-		// 		'title.unique' => 'Tiêu đề đã tồn tại',
-		// 		'slug.min' => 'Đường dẫn tĩnh ít nhất :min ký tự',
-		// 		'slug.required' => 'Đường dẫn không được để trống',
-		// 	]);
 		$img='';
 		$file=$req->upload_file;
 		$file->move(base_path('uploads/category'),$file->getClientOriginalName());
@@ -53,12 +45,6 @@ class CategoryController extends Controller
 			return redirect()->back()->with('error','Thêm mới danh mục không thành công');
 		}
 	}
-		public function search(Request $req){
-			$category=where('title','like','%'.request()->search.'%')->get();
-			return view('admin.category.index',[
-					'cates'=>$category
-				]);
-		}
 		public function deleteCategory($id){
 			$deleteCate=Category::find($id)->delete();
 			if ($deleteCate) 
@@ -71,9 +57,11 @@ class CategoryController extends Controller
 			}
 		}
 		public function editCategory($id){
+			$parent=Category::all();
 			$cate=Category::find($id);
 			return view('admin.category.edit',[
-				'cate'=>$cate
+				'cate'=>$cate,
+				'parent'=>$parent
 			]);
 		}
 		public function postedit($id,Request $req){
@@ -86,7 +74,7 @@ class CategoryController extends Controller
 			'slug.min' => 'Đường dẫn tĩnh ít nhất :min ký tự',
 			'slug.required' => 'Đường dẫn không được để trống',
 		]);
-
+		// dd($req->all());
 		$editCategory=Category::find($id);
 		$img=$editCategory->cover_image;
 		if($req->hasFile('cover_image')) {
