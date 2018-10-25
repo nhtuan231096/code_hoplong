@@ -146,8 +146,7 @@
                                                 
                                             </select>
                                             <div class="error error_category_id help-block with-errors hidden"></div>
-<<<<<<< HEAD
-=======
+
                                         </div>
                                     </div>
                                     <div id="menu1" class="tab-pane fade">
@@ -155,21 +154,21 @@
                                         <div class="form-group">
                                             <label class="control-label" for="promotion">Khuyến mãi</label>
                                             <input type="text" name="promotion" id="promotion" class="form-control">
->>>>>>> 210b3751eabcf488de0c6345936acdf8eb2baf02
+
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="download_id">ID tải xuống</label>
                                             <input type="text" name="download_id" id="promotion" placeholder="ID tải xuống" class="form-control">
                                         </div>
                                         <div class="form-group">
-<<<<<<< HEAD
+
                                             <label class="control-label" for="download_id">Loại sản phẩm</label>
-                                            bs3select
-=======
+
+
                                             <label class="control-label" for="upload_file">Ảnh</label>
                                             <input type="file" name="upload_file" class="form-control" id="upload_file" data-error="Please enter details.">
                                             <div class="help-block with-errors"></div>
->>>>>>> 210b3751eabcf488de0c6345936acdf8eb2baf02
+
                                         </div>
                                     </div>
                                     <div id="menu1" class="tab-pane fade">
